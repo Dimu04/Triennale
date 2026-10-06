@@ -33,12 +33,12 @@
 #### Organizzazione del Disco: Settori e Gap
 Se la traccia è la "strada" circolare, il *settore* è il singolo "posto auto".
 
-1) **Il Settore (l'unità minima)
+1) **Il Settore (l'unità minima)**
 	- Ogni traccia è divisa in spicchi chiamati **settori**.
 	- Un settore ha solitamente una lunghezza fissa di **512 byte**.
 	- **Importante:** Quando il computer legge dal disco, non legge mai un singolo bit, ma carica almeno un intero settore alla volta. 
 	
-2) **Intersector Gap (Lo spazio manovra)
+2) **Intersector Gap (Lo spazio manovra)**
 	- Tra due settori adiacenti c'è un piccolo spazio vuoto chiamato **intersector gap**.
 	- **A cosa serve?** Serve a dare tempo alla testina e all'elettronica di capire che un settore è finito e ne sta iniziando un altro. Senza questo gap i dati "sbatterebbero" l'uno contro l'altro 
 	
@@ -112,29 +112,13 @@ Se la traccia è la "strada" circolare, il *settore* è il singolo "posto auto".
 		
 		- *Caratteristiche* : Più economici e molto capienti, ma lenti a causa dei componenti meccanici.
 	
-	2) **Dischi a Stato Solido (Elettronico - SSD) :
+	2) **Dischi a Stato Solido (Elettronico - SSD)** :
 		- Non hanno parti in movimento. Usano chip di memoria flash (simili alle chiavette USB ma molto più veloci e affidabili).
 		
 		- *Caratteristiche* : Molto più veloci degli HDD, resistenti agli urti e silenziosi. Di contro costano di più a parità di GB.
 		
 ---
-# Hard disk Magnetico 
-
-[Un Hard Disk moderno non ha un solo piatto, ma una pila di dischi che ruotano tutti insieme attorno allo stesso asse. Ogni piatto ha due superfici (sopra e sotto) e ogni superfice ha la sua testina dedicata].
-
-1) **Il concetto di Cilindro** : È l'insieme di tutte le *tracce* che si trovano alla stessa distanza dal centro su tutti i piatti della pila, tutte le testine si muovo insieme, se la testina 1 è sulla traccia 50 del disco 1, anche la 4 è sulla traccia 50 del disco 2.
-2) *Cos'è la Track?*: È una singola *corsia circolare*, su un piatto del disco ci sono migliaia di esse 
-	![[Pasted image 20260323105051.png|294]]
-3) *Da cosa dipendono le Performance?* : I 3 fattori che determinano quanto tempo ci mette il disco a darti un dato sono:
-
-	1) **Tempo medio di Seek (Ricerca)**: Il tempo necessario per spostare il braccio meccanico sul cilindro giusto.
-	
-	2) **Latenza Rotazionale** : Il tempo che bisogna aspettare affinché il settore giusto passi sotto la testina mentre il disco gira.
-	
-	3) **Tempo di trasferimento** : Il tempo effettivo in cui i dati passano dal disco alla memoria del computer
-
----
-## Performance dei dischi magnetici
+## Performance dei dischi magnetici (Hard Disk)
 
 [Il tempo totale che la CPU deve aspettare per ricevere un dato dal disco è la somma di due componenti meccaniche principali.]
 
@@ -150,7 +134,12 @@ Se la traccia è la "strada" circolare, il *settore* è il singolo "posto auto".
 -Il Seek Time e la Latenza Rotazionale dominano completamente le performance del disco. Il tempo speso a muovere il braccio e aspettare la rotazione è migliaia di volte superiore al tempo necessario per trasmettere effettivamente i dati. Questo conferma che il limite dei *dischi magnetici è puramente meccanico*. 
 
 ---
-# Dischi IDE (Integrated Drive Electronics)
+
+# Evoluzione delle interfacce di memoria
+
+{Parliamo sempre dello stesso Hard disk che può avere sul retro un'interfaccia diversa: HDD IDE(40 pin), SCSI(50/68/80) pin o SATA (quela moderna e stretta }
+
+#### Dischi IDE (Integrated Drive Electronics)
 
 [Prima degli anni 80, gestire un disco era un incubo per la CPU. Lo standard IDE ha cambiato tutto integrando l'elettronica di controllo direttamente sull'unità.]
 
@@ -177,22 +166,27 @@ Se la traccia è la "strada" circolare, il *settore* è il singolo "posto auto".
 
 ## Dall'EIDE al SATA (L'evoluzione delle Prestazioni)
 
-[Avviene il cambio della tipologia di cavi con la quale venivano passate le istruzioni ATA E ATAPI.]
+_(Avviene il cambio della tipologia di cavi con la quale venivano inviati i dati e i comandi ATA e ATAPI)_
 
-==ATA== = Advanced Technology Attachment = È il nome del "linguaggio" usato per collegare i dischi.
+*(Advanced Technology Attachment)*
+- **ATA (o PATA/EIDE):** Il protocollo standard per la comunicazione con i dischi rigidi.
+    
+- **ATAPI:** L'estensione del protocollo creata per permettere al bus ATA di gestire anche dispositivi ottici (lettori CD/DVD) e nastri.
+    
 
-==ATAPI== = ATA Packet Interface = Un'estensione per far capire al pc che è collegato  un cd/dvd
-
-1) *Il periodo "Parallelo"( ATA e ATAPI*)  
-	Le istruzioni *ATA E ATAPI* viaggiano "tutte insieme" su 40 o 80 fili (pin)
-		
-2) **La rivoluzione seriale (SATA)**  
-	Con lo standard **ATAPI-7** avviene il cambio tecnologico definitivo: nasce il *Serial ATA (SATA)* : Qui le stesse istruzioni ATA/ATAPI vengono messe in fila indiana e sparate velocissime. 
-
-	- *Nuovo Connettore* :si passa dal *(EIDE 80-pin*) a un (*SATA 7-pin*)
-	- *Velocità* : Salto immediato a *150 MB/s*
-	- *Risparmio Energetico*.
-	- *Vantaggio extra* : I cavi sottili permettono una migliore circolazione dell'aria, evitando che il PC si surriscaldi.
+1. **Il periodo Parallelo (PATA / EIDE):**
+    
+    - I dati e i comandi viaggiano "tutti insieme" (in parallelo) su cavi a 40 o 80 fili (pin).
+        
+2. **La rivoluzione Seriale (SATA):**
+    
+    - Con lo standard ATAPI-7 nasce il **Serial ATA (SATA)**: i dati vengono trasmessi in modalità seriale (uno dietro l'altro ad altissima frequenza).
+        
+    - **Nuovo Connettore:** Si passa da EIDE (80-pin) a SATA (7-pin).
+        
+    - **Velocità:** Salto immediato a 150 MB/s (fino a 600 MB/s con le versioni successive).
+        
+    - **Vantaggio fisico:** I cavi sottili occupano meno spazio e migliorano la circolazione dell'aria nel case, facilitando il raffreddamento del PC.
 	
 	
 ---
@@ -289,7 +283,7 @@ RAID 5                 Parità distribuita        *Correzione errori + Efficienz
 	- *Pro*: Tempo di seek è nullo non è presente la testina, è 3 volte più veloce rispetto ad HDD e gli urti non causerebbero danni o crash 
 	
 	
-2) **Gli Svantaggi (Il "prezzo" da pagare)
+2) **Gli Svantaggi (Il "prezzo" da pagare)**
 	- *Usura* e *Costo* : Una SSD è molto cara e i transistor si usurano velocemente.
 3) *Differenza chiave* :L'HDD è meccanico/magnetico, l'SSD è pura elettronico.
 
@@ -481,8 +475,8 @@ Nascono 4 varianti di del DVD:
 	
 	- *Problema* : La CPU è impegnata in altre operazioni.
 	
-3) *Lettura con DMA (L'esempio principale)
-	[Cos'è la DMA? ]: 
+3) *Lettura con DMA (L'esempio principale)*
+	[Cos'è la DMA?] 
 	- La CPU dà l'ordine d'inizio e poi torna a fare altro, il *Controller* legge il blocco di dati, che poi in seguito viene trasferito *direttamente nella memoria* (tramite Bus)
 	
 	- La CPU controllerà solo alla fine se il lavoro è terminato.

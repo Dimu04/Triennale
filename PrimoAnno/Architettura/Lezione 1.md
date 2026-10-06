@@ -1,7 +1,7 @@
 #archittettura 
 # Processori
 
--Cos'è la *CPU* , è il  *Central Processing Unit* ed è il cervello del computer.
+-Cos'è la *CPU* , è il  *Central Processing Unit o Unità Centrale di Calcolo* ed è il cervello del computer.
 #### Cosa contiene la *CPU* ? 
 
 - L'*Unità di Controllo (CU)* 
@@ -10,7 +10,7 @@
  
 - I due più importanti sono il :
  -*Program Counter (PC)* che "punta" alla prossima istruzione da prelevare (FETCH) per l'esecuzione,  
- -*L' Instruciont Register (IR)*  ha il compito di mantenere l'istruzione corrente in fase di esecuzione 
+ -*L' Instruction Register (IR)*  ha il compito di mantenere l'istruzione corrente in fase di esecuzione 
 
 -Ogni componente viene collegato da un *BUS* ovvero dei cavi paralleli che trasferiscono indirizzi, dati e segnali di controllo 
 
@@ -22,13 +22,17 @@
 
 # Organizzazione della CPU
 
--Una tipica cpu di *von Neumann* (grande matematico e fisico che propose di trattare i dati e le istruzioni allo stesso modo) contiene il *datapath* o percorso dati (*si intende l'insieme di tutti i componenti fisici che manipolano trasformano e trasportano dati*) costruito da 1 a 32 registri, l'ALU e vari bus di collegamento.
+-Una tipica cpu di *von Neumann* (grande matematico e fisico che propose di trattare i dati e le istruzioni allo stesso modo) contiene il *datapath* o percorso dati (*è l'insieme dei componenti hardware della cpu che eseguono operazioni aritmetiche, logiche e trasferimento dei dati*) costruito da 1 a 32 registri, l'ALU e vari bus di collegamento.
+
+**Sui Registri:**
+    
+- _Integrazione consigliata:_ "costruito da 1 a 32 registri **generali** _(nota: nelle CPU a 32 bit ogni registro è largo 32 bit / 4 Byte; nelle CPU a 64 bit ogni registro è largo 64 bit / 8 Byte)_." 
 
 -L'*ALU* esegue su dei registri di input (A e B), addizioni e sottrazioni e altre operazioni semplici il risultato è posto nel registro di uscita.
 
 -Il risultato nel registro di uscita può essere memorizzato nei registri e successivamente nella memoria 
 -Le operazioni possono essere: *registro-memoria*  o *register-register*
-
+   
 ![[Screenshot 2026-03-04 170629.png]]
 
 
@@ -75,23 +79,23 @@ Esiste il ciclo *fetch-decode-execute*  cooridinato dall'*Unità di Controllo* �
 
 I progettisti di CPU tentano di seguire un insieme di principi denominati *principi di progettazione RISC*.
 
-1) ==Esecuzione diretta dall'Hardware
+1) ==Esecuzione diretta dall'Hardware==
 	- Le istruzioni non dovrebbero essere "interpretate" (un processo lento), ma eseguite immediatamente dai circuiti
 	- *Il trucco per le CPU CISC*: Se un'istruzione è troppo complessa la CPU la spezza in *MICROISTRUZIONI* più piccole e semplici che l'Hardware può gestire velocemente in sequenza.
 
-2) ==Massimizzare la frequenza di emissione:
+2) ==Massimizzare la frequenza di emissione:==
 	- L'obiettivo è far uscire quante più istruzioni completate possibili nell'unità di tempo.
 	
 	- Per farlo, si usa il *parallelismo* la CPU non aspetta di aver finito un'istruzione prima di iniziare la successiva.
 
 
-3) ==Le istruzioni devono essere semplici da decodificare:
+3) ==Le istruzioni devono essere semplici da decodificare:==
 	- Ovvero lunghezza predefinita, struttura regolare e poche variabili
 	
-4) ==Load/Store: Solo le istruzioni di *LOAD* e *STORE* possono toccare la memoria:
+4) ==Load/Store: Solo le istruzioni di *LOAD* e *STORE* possono toccare la memoria:==
     -   Tutte le altre istruzioni dovrebbero operare sui registri della CPU 
     
-5) ==Le CPU dovrebbero poter disporre di un elevato numeri di registri:
+5) ==Le CPU dovrebbero poter disporre di un elevato numeri di registri:==
     - Una volta prelevata una "parola" (*word*) dalla memoria, la si può tenere in un registro finché serve
 
 ---
@@ -135,7 +139,7 @@ Introduciamo il concetto di **Pipelining** (è una tecnica che permette alla CPU
 -  **SOLUZIONE DEFINITIVA** : *Il Pipeline* spinge questa logica al massimo, l'esecuzione di un'istruzione viene divisa in molti passaggi o *stage*(fasi) che vengono eseguite contemporaneamente.
 
 
-![[Screenshot 2026-03-07 102820.png|494]]
+![[Screenshot 2026-03-07 102820.png|576]]
 
 
 	S1) Unità di fetch dell'istruzione
@@ -186,7 +190,7 @@ Con l'uso della *pipelining* la CPU non diventa più veloce, ma diventa più bra
 - *Il salto di qualità (Multi-CPU)* /*Superscalare*
 	-Per ottenere velocità incredibili (incrementi di 50/100  o più volte)  servono sistemi che collegano tra loro **molte CPU**.
 	- **I 3 MODI PER "Lavorare insieme"**
-		1) *Computer con parallelismo sui dati* :
+		1) *Computer con parallelismo sui dati* (FLYNN) :
 			Esempio schiarire 1 milione di pixel di una foto  invece che farlo 1 alla volta do lo stesso ordine a 1000 piccoli processori che lo fanno contemporaneamente.
 		2) *Multiprocessori* :
 			Ci sono più CPU che condividono la **la stessa memoria RAM** di conseguenza vedono tutti gli stessi dati 
@@ -276,7 +280,7 @@ Con l'uso della *pipelining* la CPU non diventa più veloce, ma diventa più bra
 ---
 # ==INDIRIZZI DI MEMORIA==
 
-###### Questa slide spiega come la *RAM* organizza i dati per poterli recuperare velocemente, usando l'analogia di un grande armadio a cassetti.	
+###### Questa slide spiega come la *RAM(*Random Access Memory*) organizza i dati per poterli recuperare velocemente, usando l'analogia di un grande armadio a cassetti.	
 - *Le Celle (o locazioni)* : La memoria non è un ammasso disordinato, ma è divisa in piccole unità chiamate **CELLE**.
 
 - *L'Indirizzo*: Ogni cella è identificata da un numero univoco, chiamato **INDIRIZZO**, che ne indica la posizione esatta 
@@ -286,6 +290,23 @@ Con l'uso della *pipelining* la CPU non diventa più veloce, ma diventa più bra
 - *Unità Minima* : La cella è l'elemento più piccolo a cui il processore può fare riferimento diretto (Unità minima indirizzabile). 
 
 - *Le Parole (Word)* : Per gestire dati più grandi, i byte possono essere raggruppati in strutture chiamate **parole**. 
+
+- Invece la RAM mantiene le sue celle piccole da **1 Byte ciascuna**, ma la CPU a 64 bit è così potente che quando lavora **ne scarica e ne manipola 8 alla volta** (la famosa _Word_).
+
+ 🎯 **Ricapitolando la formula magica per l'esame:**
+ 
+- **Cella base della RAM:** 1 Byte (8 bit)
+
+- **Word (il blocco scambiato tra CPU e RAM):** 8 Byte (64 bit)
+ 
+- **Indirizzo della cella:** 64 bit
+
+
+- **La regola dell'hardware:** Per convenzione universale, la singola cella base di memoria contiene **sempre e solo 1 Byte (cioè 8 bit)**.
+    
+- **Il calcolo della CPU:** Siccome la CPU lavora a **64 bit**, fai il calcolo:
+    
+    $$\frac{64 \text{ bit della CPU}}{8 \text{ bit della singola cella}} = \mathbf{8 \text{ celle (8 Byte)}}$$
 
 ![[Pasted image 20260311100307.png]]
 
@@ -311,7 +332,8 @@ $\text {Nuovo argomento}$ [come sono fatti i dati "dentro" le RAM]
 	![[Pasted image 20260309101411.png|402]]
 ---
 ## ==Ordinamento dei byte== 
-###### Quando una "parola" (word) è composta da più byte (ad esempio 4 byte per una word a 32 bit), il computer deve decidere in quale ordine scriverli nelle celle di memoria. Esistono due standard opposti:
+###### Quando una "parola" (word) ->(: **"Formato del blocco"** (ovvero la quantità standard di Byte che la CPU e la RAM si scambiano in un colpo solo).  
+è composta da più byte (ad esempio 4 byte per una word a 32 bit), il computer deve decidere in quale ordine scriverli nelle celle di memoria. Esistono due standard opposti:
 
 - *Big Endian (Da sinistra a destra)* :
 	-I byte vengono scritti partendo dal più significativo (quello "più a sinistra" nel numero) verso il meno significativo.

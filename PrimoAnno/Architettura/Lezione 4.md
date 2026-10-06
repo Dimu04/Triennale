@@ -64,14 +64,14 @@ In questo secondo blocco ci si sposta dalla logica del singolo bit all'organizza
 	 
 	- **Indirizzamento**: Per selezionare una specifica "cella" o parola, viene usato un **Decodificatore di Indirizzi**.
 	
-	- **Bus di Dati** : Viene mostrato come i bit escano in parallelo (es 8 o 16 but alla volta).
+	- **Bus di Dati** : Viene mostrato come i bit escano in parallelo (es 8 o 16 bit alla volta).
 	- **Segnali di Controllo** : Compaiono tre segnali fondamentali che devi conoscere: 
 		- **CS (Chip Select)** : Attiva l'intero chip.
 		- **RD/WR (ReaD/Write)** : Decide se stiamo leggendo o scrivendo.
 		- **OE (Output Enable)** : Abilita il passaggio dei dati verso il bus esterno.
 
 2) $\text {Il Buffer Tri-state}$
-	 Questo è un concetto tecnico cruciale presente nelle slide per spiegare come più componenti convivo sullo stesso filo.
+	 Questo è un concetto tecnico cruciale presente nelle slide per spiegare come più componenti convivono sullo stesso filo.
 	 
 	- Oltre agli stati *0* e *1*, esiste il terzo stato:  **Alta Impedenza (Z)**.
 	
