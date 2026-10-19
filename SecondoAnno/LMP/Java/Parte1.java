@@ -158,8 +158,10 @@ public class Parte1 {
 
              Sono i dati che puoi passare al programma dell'avvio da riga 
              comando (terminale):
-                - String[]: indica una array (una lista) di testi/stringhe
+                - String[]: indica una array (una lista) di testi/stringhe, è una "scatola" che prepara 
+                    sempre per accogliere eventuali comandi da terminale.
                 - args: è il nome della variabile (abbreviato di arguments)
+
 
     Esempio:
         Se avviassimo il programma da termianle scrivendo java Parte 2 Ciao 123, dentro args
